@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据清洗与构造"
+  short_description: "建立可复现的数据清洗、匹配、变量构造和数据质量核验流程"
+  default_prompt: "使用 $empirical-data 帮我完成当前实证论文项目中对应的工作。"

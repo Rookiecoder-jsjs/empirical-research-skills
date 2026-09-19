@@ -1,0 +1,4 @@
+interface:
+  display_name: "环境搭建与启动"
+  short_description: "面向零编程基础用户搭建并验证实证项目的 Python 与 uv 环境"
+  default_prompt: "使用 $empirical-setup 帮我完成当前实证论文项目中对应的工作。"

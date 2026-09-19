@@ -1,0 +1,4 @@
+interface:
+  display_name: "隔离探索与采纳"
+  short_description: "在独立工作区比较探索性研究设定并按明确范围采纳分析结果"
+  default_prompt: "使用 $empirical-explore 帮我完成当前实证论文项目中对应的工作。"

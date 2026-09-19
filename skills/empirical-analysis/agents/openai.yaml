@@ -1,0 +1,4 @@
+interface:
+  display_name: "实证分析与复现"
+  short_description: "按研究设计运行模型、核对依赖缓存并输出可追溯的实证结果"
+  default_prompt: "使用 $empirical-analysis 帮我完成当前实证论文项目中对应的工作。"

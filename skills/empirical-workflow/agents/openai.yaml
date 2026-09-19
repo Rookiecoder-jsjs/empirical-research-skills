@@ -1,0 +1,4 @@
+interface:
+  display_name: "实证研究工作流"
+  short_description: "衔接实证论文的环境准备、项目组织、数据处理、分析和写作工作"
+  default_prompt: "使用 $empirical-workflow 帮我完成当前实证论文项目中对应的工作。"

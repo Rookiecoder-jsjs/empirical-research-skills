@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "raw_paths": ["data"],
+  "state_dir": "processed/results",
+  "steps": [
+    {
+      "id": "summary",
+      "command": ["{python}", "scripts/summarize.py"],
+      "inputs": ["data/synthetic.csv"],
+      "code": ["scripts/summarize.py"],
+      "outputs": ["processed/results/summary.json"],
+      "depends_on": [],
+      "role": "descriptive-demo"
+    }
+  ]
+}

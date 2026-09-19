@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目目录与归档"
+  short_description: "组织不同主题实证论文的输入、脚本、处理产物和正文目录结构"
+  default_prompt: "使用 $empirical-project 帮我完成当前实证论文项目中对应的工作。"
