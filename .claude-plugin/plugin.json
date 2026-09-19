@@ -1,0 +1,10 @@
+{
+  "name": "empirical-research",
+  "version": "1.1.0",
+  "description": "面向零编程基础研究者的通用实证论文工作流：环境、项目、数据、分析、探索、写作与检查。",
+  "author": { "name": "Rookiecoder-jsjs" },
+  "homepage": "https://github.com/Rookiecoder-jsjs/empirical-research-skills",
+  "repository": "https://github.com/Rookiecoder-jsjs/empirical-research-skills",
+  "license": "MIT",
+  "keywords": ["empirical-research", "academic-writing", "reproducibility"]
+}

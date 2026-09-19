@@ -1,0 +1,16 @@
+{
+  "name": "rookiecoder-research",
+  "owner": {
+    "name": "Rookiecoder-jsjs"
+  },
+  "plugins": [
+    {
+      "name": "empirical-research",
+      "source": "./",
+      "description": "8个通用实证研究技能，含新手环境搭建。"
+    }
+  ],
+  "metadata": {
+    "description": "通用实证论文工作流技能包，由 Rookiecoder-jsjs 维护。"
+  }
+}

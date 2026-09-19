@@ -33,29 +33,53 @@ This is a Chinese-first, topic-independent skill pack for reproducible empirical
 
 技能可以独立使用；总入口也不要求每次调用全部技能。计量方法以研究问题和设计为准，不把DID、六项控制变量、显著性或期刊审稿意见设成通用要求。
 
-## 安装技能
+## 安装：先选你使用的工具
 
-先下载本仓库的 ZIP 并解压，或使用 Git：
+**安装 Skill 不需要先安装 Python、uv 或 Node.js。** 先安装技能，再让 `empirical-setup` 帮你搭建研究环境。以下假设你已经能打开并使用 Codex 或 Claude Code。
 
-```bash
-git clone https://github.com/Rookiecoder-jsjs/empirical-research-skills.git
+### Codex：复制一句话
+
+先在 Codex 中打开你的论文项目，再把下面这段话发送给它：
+
+> 请从 https://github.com/Rookiecoder-jsjs/empirical-research-skills 安装 skills/ 下的全部8个技能到当前论文项目的 .agents/skills/。读取仓库默认分支及安装说明，不要假定分支叫 main。复制完整技能目录；安装前统一检查同名冲突，遇到冲突先保留已有文件并报告。没有 Python 或 Git 时可下载 ZIP 后复制，不要为了安装 Skill 先安装分析环境。完成后报告安装位置和8个技能名称，并告诉我如何检查它们是否已被 Codex 识别。
+
+项目位置不明确时，助手会先让你选论文文件夹。安装完成后，在技能选择器中检查 `empirical-workflow`；没有出现时重新打开会话或重启 Codex。
+
+### Claude Code：安装插件
+
+在 **Claude Code 的对话输入框** 中依次发送，每次一行：
+
+```text
+/plugin marketplace add Rookiecoder-jsjs/empirical-research-skills
+/plugin install empirical-research@rookiecoder-research
 ```
 
-**还没有Python时：** 不需要先运行安装脚本。打开 `skills/empirical-setup/SKILL.md` 给助手阅读，或先看[环境指南](skills/empirical-setup/references/environment-guide.md)。也可把 `skills/` 内8个文件夹手动复制到你的论文项目的 `.agents/skills/`。复制整个文件夹，保留其内部资源。
+安装界面中：只用于这篇论文，选择项目范围；希望本机所有论文都能使用，选择用户范围。按客户端提示刷新插件或重新打开会话，然后输入：
 
-**已有Python时：** 在下载的仓库根目录运行，替换成实际论文项目路径：
-
-```bash
-python scripts/install_skills.py --project "/path/to/your/paper"
+```text
+/empirical-research:empirical-workflow
 ```
 
-默认安装到目标项目的 `.agents/skills/`。若使用其他支持本格式的工具，可以指定其技能目录：
+一个插件包含全部8个技能，后续可以通过插件管理界面更新或卸载。不要再同时复制一份到 `.claude/skills/`，以免出现重复入口。插件安装无需 Python；如果客户端提示缺少 Git，可使用下面的 ZIP 方式。
 
-```bash
-python scripts/install_skills.py --destination "/path/to/your/paper/.claude/skills"
-```
+### 下载后复制：两种工具都适用
 
-安装器先检查冲突，拒绝覆盖任何已有同名技能；不会修改其他技能、项目数据或全局配置。不同客户端的技能发现机制不同，复制后重新打开项目或按该客户端说明刷新；本包不保证所有客户端自动加载。
+GitHub 页面点击 **Code → Download ZIP** 并解压，把 `skills/` 内8个 `empirical-*` 文件夹完整复制到：
+
+| 使用工具 | 只在当前论文中使用 | 在本机所有项目中使用 |
+|---|---|---|
+| Codex | 论文文件夹下的 `.agents/skills/` | 用户主目录下的 `.agents/skills/` |
+| Claude Code | 论文文件夹下的 `.claude/skills/` | 用户主目录下的 `.claude/skills/` |
+
+不存在的目录可以创建。复制完成的层级应为 `.agents/skills/empirical-setup/SKILL.md` 或 `.claude/skills/empirical-setup/SKILL.md`，不要多套一层 `skills/`。已有同名文件夹时停止，不直接覆盖。
+
+[完整安装指南](docs/installation.md)包含两种工具的安装提示词、已有 Python 时的安装器、验证、更新、卸载及常见故障。
+
+## 安装后的第一句话
+
+> 我没有编程基础。请使用 empirical-setup 检查这篇论文的运行环境，按我的系统指导安装或复用 Python 和 uv，创建或复用当前项目的虚拟环境，并教我激活它。每一步说明在哪里操作、怎样判断成功；先不要跑研究模型。
+
+安装 Skill 只说明助手获得了流程说明，**不代表研究环境已经搭好**。技能文件在多个项目中复用，分析依赖仍按每篇论文的环境单独维护。
 
 ## 首次准备研究项目
 
