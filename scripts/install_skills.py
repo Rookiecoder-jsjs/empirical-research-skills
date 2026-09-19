@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 import shutil
+import sys
 
 
 CLIENT_DIRS = {"codex": ".agents", "claude": ".claude"}
@@ -54,6 +55,8 @@ def install(source: Path, destination: Path) -> list[str]:
 
 
 def main() -> int:
+    # Keep the terminal encoding; escape unsupported path characters in legacy pipes.
+    sys.stdout.reconfigure(errors="backslashreplace")
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--project", type=Path, help="Existing research project folder")

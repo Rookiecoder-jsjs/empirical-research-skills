@@ -1,6 +1,7 @@
 """Installation checks only write isolated temporary folders."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -79,6 +80,21 @@ class ClientInstallationTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue((self.project / '.claude/skills/empirical-setup/SKILL.md').is_file())
         self.assertFalse((self.project / '.agents').exists())
+
+    def test_legacy_output_encoding_does_not_break_chinese_paths(self):
+        env = dict(os.environ, PYTHONIOENCODING="cp1252")
+        for preview in [True, False]:
+            command = [sys.executable, str(ROOT / 'scripts/install_skills.py'),
+                       '--project', str(self.project)]
+            if preview:
+                command.append('--dry-run')
+            result = subprocess.run(command, capture_output=True, text=True,
+                                    encoding='cp1252', env=env)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('8 skills', result.stdout)
+            if preview:
+                self.assertEqual(list(self.project.iterdir()), [])
+        self.assertTrue((self.project / '.agents/skills/empirical-setup/SKILL.md').is_file())
 
     def test_legacy_cli_defaults_to_codex(self):
         result = self.cli('--project', str(self.project))
